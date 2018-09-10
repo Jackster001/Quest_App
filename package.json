@@ -1,0 +1,21 @@
+{
+  "name": "mern-project",
+  "version": "1.0.0",
+  "description": "CIS 5800 project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Wei Lin (Jackie)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.13"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
