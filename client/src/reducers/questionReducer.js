@@ -1,32 +1,33 @@
-import uuid from 'uuid';
-import {GET_QUESTIONS, ADD_QUESTION, DELETE_QUESTION} from '../actions/types';
+import {GET_QUESTIONS, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING} from '../actions/types';
 
 const initialState={
-    questionItems:[
-        {id: uuid(), question:"question 1" },
-        {id: uuid(), question:"question 2" },
-        {id: uuid(), question:"question 3" },
-        {id: uuid(), question:"question 4" }
-    ]
+    questionItems:[],
+    loading: false
 }
 
 export default function(state= initialState, action){
     switch(action.type){
-        case GET_QUESTIONS:;
-        
+        case GET_QUESTIONS:
             return{
-                ...state
+                ...state,
+                questionItems: action.payload,
+                loading: false
             };
         case DELETE_QUESTION:
             return{
                 ...state,
-                questionItems: state.questionItems.filter(questionItems => questionItems.id !== action.payload)
+                questionItems: state.questionItems.filter(questionItems => questionItems._id !== action.payload)
             };
-        // case ADD_QUESTION:
-        //     return{
-        //         ...state,
-        //         questionItems: state.questionItems.concat(uuid(), action.question)
-        //     }
+        case ADD_QUESTION:
+            return{
+                ...state,
+                questionItems: [action.payload, ...state.questionItems]
+            };
+        case QUESTIONS_LOADING:
+            return{
+                ...state,
+                loading: true
+            }
         default: return state;
     }
 }

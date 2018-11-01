@@ -10,13 +10,13 @@ import{
     Input
 } from 'reactstrap';
 import {connect} from 'react-redux';
-import {addQuestion} from '../actions/questonActions';
-import uuid from 'uuid';
+import {addQuestion} from '../actions/questionActions';
 
 class QuestionModal extends Component{
     state ={
         modal: false,
-        statement: ''
+        name: 'kjghkesn',
+        question: this.name
     }
 
     toggle= () =>{
@@ -26,15 +26,14 @@ class QuestionModal extends Component{
     }
 
     onChange=(event)=>{
-        this.setState({[event.target.statement]: event.target.value})
+        this.setState({[event.target.name]: event.target.value});
     }
 
     onSubmit= (event) =>{
         event.preventDefault();
-         const newQuestion ={
-            id: uuid(),
-            statement: this.state.statement
-         }
+        const newQuestion ={
+            question: this.state.name,
+        }
 
          //add item via addQuestion  question
          this.props.addQuestion(newQuestion);
@@ -62,8 +61,8 @@ class QuestionModal extends Component{
                                 <Label for="question"></Label>
                                 <Input 
                                     type="text"
-                                    statement="statement"
-                                    id='question'
+                                    question="question"
+                                    name='name'
                                     placeholder="Ask your question here..."
                                     onChange={this.onChange}
                                 />
@@ -81,4 +80,8 @@ class QuestionModal extends Component{
     }
 }
 
-export default connect()(QuestionModal);
+const mapStateToProps = state => ({
+    question: state.question
+});
+
+export default connect(mapStateToProps, {addQuestion})(QuestionModal);

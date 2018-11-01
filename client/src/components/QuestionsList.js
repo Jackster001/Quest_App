@@ -3,19 +3,11 @@ import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import uuid from 'uuid';
 import {connect} from 'react-redux';
-import {getQuestions, deleteQuestion, addQuestion} from '../actions/questonActions';
+import {getQuestions, deleteQuestion, addQuestion} from '../actions/questionActions';
 import PropTypes from 'prop-types';
 
 
 class QuestionsList extends Component{
-    // state={
-    //     questionItems:[
-    //         {id: uuid(), question:"question 1" },
-    //         {id: uuid(), question:"question 2" },
-    //         {id: uuid(), question:"question 3" },
-    //         {id: uuid(), question:"question 4" }
-    //     ]
-    // }
 
     componentDidMount(){
         this.props.getQuestions();
@@ -24,10 +16,6 @@ class QuestionsList extends Component{
     onDeleteClick=(id)=>{
         this.props.deleteQuestion(id);
     }
-
-    // addQuestionClick=(question)=>{
-    //     this.props.addQuestion(question);
-    // }
 
     render(){
         const { questionItems } =this.props.question;
@@ -48,15 +36,15 @@ class QuestionsList extends Component{
                 
                 <ListGroup>
                     <TransitionGroup>
-                        {questionItems.map(({id, question})=>(
-                            <CSSTransition key={id} timeout={500} classNames='fade'>
+                        {questionItems.map(({_id, question})=>(
+                            <CSSTransition key={_id} timeout={500} classNames='fade'>
                                 <ListGroupItem>
                                     {question}
                                     <Button
                                         className="remove-btn"
                                         color="danger"
                                         size="sm"
-                                        onClick={this.onDeleteClick.bind(this, id)}
+                                        onClick={this.onDeleteClick.bind(this, _id)}
                                         >
                                         Delete
                                     </Button>
@@ -80,4 +68,4 @@ const mapStateToProps =(state)=>({
 });
 
 // export default QuestionsList;
-export default connect(mapStateToProps, {getQuestions, deleteQuestion})(QuestionsList);
+export default connect(mapStateToProps, {getQuestions, deleteQuestion, addQuestion})(QuestionsList);
