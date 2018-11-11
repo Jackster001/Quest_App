@@ -15,7 +15,6 @@ class AppNavBar extends Component{
         isOpen: false
     }
     toggle = () =>{
-        
         this.setState({
             isOpen: !this.state.isOpen
         })
@@ -31,7 +30,11 @@ class AppNavBar extends Component{
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <NavLink href="https://www.google.com">Home</NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink href="#">About</NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink href="#">Contact</NavLink>
                             </NavItem>
                         </Nav>

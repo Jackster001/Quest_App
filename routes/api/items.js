@@ -3,6 +3,8 @@ const router= express.Router();
 //Item model
 const Item= require('../../models/Item');
 
+
+
 //@route    GET api/items
 //@desc     Get all items
 //@access   public 
@@ -17,10 +19,13 @@ router.get('/', (req, res)=> {
 //@access   public 
 router.post('/', (req, res)=> {
     const newItem=new Item({
-        question:req.body.question
+        question:req.body.question,
+        description:req.body.question
     });
     newItem.save().then(Item => res.json(Item));
 });
+
+
 
 //@route    DELTE api/items/:id
 //@desc     Delete a item
@@ -32,3 +37,4 @@ router.delete('/:id', (req, res)=> {
 });
 
 module.exports =router;
+
