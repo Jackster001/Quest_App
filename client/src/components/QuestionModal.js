@@ -18,7 +18,7 @@ class QuestionModal extends Component{
         name: '',
         Desc:'',
         question: this.name,
-        description:this.Desc
+        description: this.Desc
     }
 
     toggle= () =>{
@@ -38,7 +38,7 @@ class QuestionModal extends Component{
         event.preventDefault();
         const newQuestion ={
             question: this.state.name,
-            description:this.state.Desc
+            description: this.state.Desc
         }
 
          //add item via addQuestion  question
@@ -64,21 +64,22 @@ class QuestionModal extends Component{
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for="question"></Label>
+                                <Label for="question">Question</Label>
                                 <Input 
                                     type="text"
                                     question="question"
                                     name='name'
-                                    placeholder="Ask your question here..."
+                                    placeholder="Place your question here..."
                                     onChange={this.onChange1}
                                 />
                                 <Label for="description">Description</Label>
                                 <Input 
-                                    type="textarea" 
-                                    name="" 
+                                    type="textarea"
                                     Desc="Description"
+                                    name='name'
                                     placeholder="More details..."
-                                    onChange={this.onChange2} />
+                                    onChange={this.onChange2}
+                                />
                                 <Button
                                     color="dark"
                                     style={{marginTop:"2rem"}}
