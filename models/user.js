@@ -8,7 +8,11 @@ const UserSchema=new Schema({
     avatar:{
         type: String
     },
-    name:{
+    firstName:{
+        type:String,
+        required: true
+    },
+    lastName:{
         type:String,
         required: true
     },

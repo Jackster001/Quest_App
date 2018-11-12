@@ -5,6 +5,10 @@ const gravatar= require('gravatar');
 const bcrypt= require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys= require('../../config/keys');
+const passport=require('passport');
+const validateRegisterInput= require('../../validation/register');
+const validateLoginInput= require('../../validation/login');
+
 router.get('/users', (req, res)=> {
     User.find()
     .sort({date: -1})
@@ -21,9 +25,16 @@ router.get('/users', (req, res)=> {
 router.get('/test', (req, res)=> res.json({msg: 'Users Works'}));
 
 router.post('/register',(req, res)=>{
+    const {errors, isValid} = validateRegisterInput(req.body);
+    //check validation
+    if(!isValid){
+        return res.status(400).json(errors);
+    }
+
     User.findOne({email: req.body.email})
     .then(user=>{
         if(user){
+            errors.email = 'Email already exists'
             return res.status(400).json({email:'Email already exists'});
         }else{
             const avatar=gravatar.url(req.body.email,{
@@ -32,7 +43,8 @@ router.post('/register',(req, res)=>{
                 d: 'mm'
             });
             newUser=new User({
-                name:req.body.name,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 avatar,
                 password: req.body.password
@@ -51,6 +63,11 @@ router.post('/register',(req, res)=>{
 })
 
 router.post('/login', (req, res)=>{
+    const {errors, isValid} = validateLoginInput(req.body);
+    //check validation
+    if(!isValid){
+        return res.status(400).json(errors);
+    }
     const email=req.body.email;
     const password = req.body.password;
 
@@ -58,7 +75,8 @@ router.post('/login', (req, res)=>{
     User.findOne({email})
     .then(user => {
         if(!user){
-            return res.status(404).json({email: 'User not found'});
+            errors.email = 'User not Found'
+            return res.status(404).json(errors);
         }
         //check password
         bcrypt.compare(password, user.password)
@@ -66,7 +84,7 @@ router.post('/login', (req, res)=>{
                 if(isMatch){
                     //User is matched
                     
-                    const payload = {id: user.id, name: user.name, avatar: user.avatar} //create jwt playload
+                    const payload = {id: user.id, firstName: user.firstName,lastName: user.lastName, avatar: user.avatar} //create jwt playload
 
                     //Sign token
                     jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600}, (err, token)=>{
@@ -76,9 +94,20 @@ router.post('/login', (req, res)=>{
                         })
                     });
                 }else{
-                    return res.status(400).json({password: "Password Incorrect"});
+                    errors.password="Password Incorrect"
+                    return res.status(400).json(errors);
                 }
             })
+    });
+});
+
+//returning current user
+router.get('/current', passport.authenticate('jwt',{session:false}), (req, res)=>{
+    res.json({
+        id: req.user.id,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email
     });
 });
 
