@@ -1,8 +1,54 @@
 const mongoose= require('mongoose');
 const Schema= mongoose.Schema;
 
-const postSchema=new Schema({
-    
+const PostSchema=new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    text: {
+        type: String,
+        required: true
+    },
+    userName: {
+        type: String
+    },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    avatar:{
+        type: String
+    },
+    comments:[
+        {
+            users:{
+                type: Schema.Types.ObjectId,
+                ref: 'users'
+            },
+            text: {
+                type: String,
+                required: true
+            },
+            name: {
+                type: String,
+            },
+            avatar:{
+                type: String
+            },
+            date: {
+                type: Date,
+                default: Date.now
+            }
+
+        }
+    ],
+    date:{
+        type: Date,
+        default: Date.now
+    }
 })
 
-module.exports=User=mongoose.model('post', postSchema);
+module.exports=Post=mongoose.model('post', PostSchema);

@@ -43,6 +43,7 @@ router.post('/register',(req, res)=>{
                 d: 'mm'
             });
             newUser=new User({
+                userName: req.body.userName,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
@@ -84,7 +85,7 @@ router.post('/login', (req, res)=>{
                 if(isMatch){
                     //User is matched
                     
-                    const payload = {id: user.id, firstName: user.firstName,lastName: user.lastName, avatar: user.avatar} //create jwt playload
+                    const payload = {id: user.id, username, firstName: user.firstName,lastName: user.lastName, avatar: user.avatar} //create jwt playload
 
                     //Sign token
                     jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600}, (err, token)=>{

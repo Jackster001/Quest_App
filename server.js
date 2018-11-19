@@ -3,6 +3,7 @@ const mongoose= require('mongoose');
 const bodyParser= require('body-parser');
 const items= require('./routes/api/items');
 const users= require('./routes/api/users');
+const posts= require('./routes/api/posts');
 const passport= require('passport');
 // const postComment= require('./routes/api/post');
 // const profile= require('./routes/api/profile');
@@ -32,6 +33,7 @@ require('./config/passport')(passport);
 //Use routes
 app.use('/api/items', items);
 app.use('/api/users', users);
+app.use('/api/posts', posts);
 // app.use('/api/profile', items);
 // app.use('/api/postComment', items);
 

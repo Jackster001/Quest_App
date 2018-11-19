@@ -8,13 +8,15 @@ const UserSchema=new Schema({
     avatar:{
         type: String
     },
-    firstName:{
-        type:String,
+    userName:{
+        type: String,
         required: true
     },
+    firstName:{
+        type: String
+    },
     lastName:{
-        type:String,
-        required: true
+        type: String
     },
     email:{
         type: String,

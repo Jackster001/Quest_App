@@ -9,8 +9,7 @@ class UserProfile extends Component{
             {id: uuid(), 
             picture:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDTIgKaxkreAmBgWI1jSPZAI5G3WACpSKMvh5-xmxmc7ozf7Uk", 
             name:"Jack", 
-            email:"wlin001@gmail.com",
-            rating: 5 }
+            email:"wlin001@gmail.com"}
         ]
     }
     render(){
