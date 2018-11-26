@@ -9,6 +9,7 @@ import{
     NavLink,
     Container
 } from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 class AppNavBar extends Component{
     state={
@@ -16,11 +17,11 @@ class AppNavBar extends Component{
     }
     toggle = () =>{
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpenj
         })
-    }
+    }  
     render(){
-        return(
+        return( 
         <div>
             <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
@@ -28,14 +29,15 @@ class AppNavBar extends Component{
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
+                            {/* <NavItem>
+                                <NavLink><Link  class="navLink" to="/">Home</Link>
+                                </NavLink>
+                            </NavItem> */}
                             <NavItem>
-                                <NavLink href="https://www.google.com">Home</NavLink>
+                                <NavLink><Link  class="navLink" to="/Register">Register</Link></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#">About</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="#">Contact</NavLink>
+                            <NavLink><Link class="navLink" to="/Login">Login</Link></NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

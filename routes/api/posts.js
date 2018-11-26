@@ -11,6 +11,20 @@ const validatePostInput=require('../../validation/post')
 
 router.get('/test', (req,res)=> res.json({msg: 'Posts works'}));
 
+router.get('/', (req,res)=>{
+    Post.find()
+    .sort({date: -1})
+    .then(posts => res.json(posts))
+    .catch(err=> res.status(404).json({nopostsfound:'No posts found with that id'}));
+});
+
+router.get('/:id', (req,res)=>{
+    Post.find()
+    .sort({date: -1})
+    .then(posts => res.json(posts))
+    .catch(err=> res.status(404).json({nopostfound:'no post found with that id'}));
+});
+
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     const {errors, isValid} = validatePostInput(req.body);
 
@@ -25,5 +39,9 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     });
     newPost.save().then(post => res.json(post));
 });
+
+// router.delete('/:id', passport.authenticate('jwt', {session:false}), (req, res) => {
+    
+// })
 
 module.exports =router;
