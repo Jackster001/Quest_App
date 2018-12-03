@@ -24,6 +24,10 @@ export const addQuestion = (item) => dispatch => {
             payload: res.data
     }))
 };
+//HERE IS THE SOLUTION
+// export const addQuestion = id => dispatch =>{
+
+// }
 export const deleteQuestion = id => dispatch => {
     var identity=""+id;
     axios.delete('/api/items/'+identity).then(res =>

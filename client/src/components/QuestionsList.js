@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 class QuestionsList extends Component{
 
+    
     componentDidMount(){
         this.props.getQuestions();
     }
@@ -17,7 +18,7 @@ class QuestionsList extends Component{
     }
 
     render(){
-        const { questionItems } =this.props.question;
+        const {questionItems } =this.props.question;
         return(
             <Container>
                 {/* <center>
@@ -34,20 +35,33 @@ class QuestionsList extends Component{
                 Add Question</Button></center> */}
                 
                 <ListGroup>
-                    <TransitionGroup>
+                    <TransitionGroup className="QuestContainer">
+                        <h1>Questions</h1>
                         {questionItems.map(({_id, question, description})=>(
+                            
                             <CSSTransition key={_id} timeout={500} classNames='fade'>
-                                <ListGroupItem >
-                                    {question}
-                                    {description}
-                                    <Button
-                                        className="remove-btn"
-                                        color="danger"
-                                        size="sm"
-                                        onClick={this.onDeleteClick.bind(this, _id)}
-                                        >
-                                        Delete
-                                    </Button>
+                            
+                                <ListGroupItem className="questionLi">
+                                    <div className="questionContent">
+                                            <div>{question}</div>
+                                        
+                                        {/* {description} */}
+                                        <br/>
+                                        <center>
+                                        <Button
+                                        className="answerbutton"
+                                            color="success"
+                                            size="sm"
+                                        >Answer</Button>
+                                        <Button
+                                            className="remove-btn"
+                                            color="secondary"
+                                            size="sm"
+                                            onClick={this.onDeleteClick.bind(this, _id)}
+                                            >
+                                            Delete
+                                        </Button></center>
+                                    </div>
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
@@ -67,7 +81,7 @@ QuestionsList.propTypes={
 
 const mapStateToProps =(state)=>({
     question:state.question,
-    description:state.question
+    description:state.description
 });
 
 // export default QuestionsList;
