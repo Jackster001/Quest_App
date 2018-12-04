@@ -30,7 +30,7 @@ export const oneQuestion = id => dispatch =>{
     axios.get('/api/items/'+identity).then(res =>
         dispatch({
             type: GET_SPECIFIC_QUESTION,
-            payload: id
+            payload: res.data
         }))
 }
 export const deleteQuestion = id => dispatch => {

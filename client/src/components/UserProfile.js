@@ -25,8 +25,6 @@ class UserProfile extends Component{
             email:"Professor@baruchmail.cuny.edu",
             description:"This course emphasizes an object-oriented approach to solving computer programming problems. Using these techniques leads to shorter system development life cycles, increased programmer productivity, code reusability, and reduced system maintenance costs. This course provides a thorough, practical knowledge of object-oriented programming methods. Student learn the principles underlying programming using a language such as C++. This is the first part of a two-semester sequence. No prior knowledge of computer programming is required."
         }
-            
-            // {getUser()}
         ]
     }
     

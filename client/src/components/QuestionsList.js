@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {connect} from 'react-redux';
-import {getQuestions, deleteQuestion, addQuestion} from '../actions/questionActions';
+import {getQuestions, deleteQuestion, addQuestion, oneQuestion} from '../actions/questionActions';
 import PropTypes from 'prop-types';
 
 
 class QuestionsList extends Component{
-
-    
+    state={
+        questionId:null
+    }
     componentDidMount(){
         this.props.getQuestions();
     }
 
     onDeleteClick=(id)=>{
         this.props.deleteQuestion(id);
+    }
+
+    onFocusClick=(id)=>{
+        this.setState.questionId=this.props.oneQuestion(id)
     }
 
     render(){
@@ -52,6 +57,7 @@ class QuestionsList extends Component{
                                         className="answerbutton"
                                             color="success"
                                             size="sm"
+                                            onClick={this.onFocusClick.bind(this, _id)}
                                         >Answer</Button>
                                         <Button
                                             className="remove-btn"
@@ -67,6 +73,10 @@ class QuestionsList extends Component{
                         ))}
                     </TransitionGroup>
                 </ListGroup>
+            {/* <p>{questionItems
+                .filter(questionItems => questionItems._id === this.state.questionId)
+                .map(questionItems=>questionItems.question)
+                }</p> */}
             </Container>
         )
     }
@@ -85,4 +95,4 @@ const mapStateToProps =(state)=>({
 });
 
 // export default QuestionsList;
-export default connect(mapStateToProps, {getQuestions, deleteQuestion, addQuestion})(QuestionsList);
+export default connect(mapStateToProps, {getQuestions, deleteQuestion, addQuestion, oneQuestion})(QuestionsList);
