@@ -8,8 +8,7 @@ const ItemSchema= new Schema({
         required: true
     },
     description:{
-        type: String,
-        required: false
+        type: String
     },
     date: {
         type: Date,

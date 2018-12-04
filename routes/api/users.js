@@ -14,6 +14,19 @@ router.get('/users', (req, res)=> {
     .sort({date: -1})
     .then(users => res.json(users))
 });
+// router.get('/:id', (req,res)=>{
+//     User.find()
+//     .sort({date: -1})
+//     .then(User => res.json(User))
+//     .catch(err=> res.status(404).json({nopostfound:'no post found with that id'}));
+// });
+
+router.get('/:id', (req, res)=>{
+    User.findById(req.params.id)
+    .then(User => res.json(User)
+    .catch(err=> res.status(404).json({success:false})
+    ));
+});
 
 // router.post('/create', (req, res)=> {
 //     const newUser=new User({
@@ -111,6 +124,8 @@ router.get('/current', passport.authenticate('jwt',{session:false}), (req, res)=
         email: req.user.email
     });
 });
+
+
 
 router.delete('/users/:id', (req, res)=> {
     User.findById(req.params.id)

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_QUESTIONS, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING} from './types';
+import {GET_QUESTIONS,GET_SPECIFIC_QUESTION, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING} from './types';
 
 export const getQuestions = () => dispatch => {
     // return{
@@ -24,6 +24,15 @@ export const addQuestion = (item) => dispatch => {
             payload: res.data
     }))
 };
+// HERE IS THE SOLUTION
+export const oneQuestion = id => dispatch =>{
+    var identity=""+id;
+    axios.get('/api/items/'+identity).then(res =>
+        dispatch({
+            type: GET_SPECIFIC_QUESTION,
+            payload: id
+        }))
+}
 export const deleteQuestion = id => dispatch => {
     var identity=""+id;
     axios.delete('/api/items/'+identity).then(res =>

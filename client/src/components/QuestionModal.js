@@ -11,7 +11,7 @@ import{
 } from 'reactstrap';
 import {connect} from 'react-redux';
 import {addQuestion} from '../actions/questionActions';
-
+import PropTypes from 'prop-types';
 class QuestionModal extends Component{
     state ={
         modal: false,
@@ -30,8 +30,8 @@ class QuestionModal extends Component{
     onChange1=(event)=>{
         this.setState({[event.target.name]: event.target.value});
     }
-    onChange2=(event)=>{
-        this.setState({[event.target.Desc]: event.target.value});
+    onChange2=(event2)=>{
+        this.setState({[event2.target.Desc]: event2.target.value});
     }
 
     onSubmit= (event) =>{
@@ -66,20 +66,20 @@ class QuestionModal extends Component{
                             <FormGroup>
                                 <Label for="question">Question</Label>
                                 <Input 
-                                    type="text"
+                                    type="textarea"
                                     question="question"
                                     name='name'
                                     placeholder="Place your question here..."
                                     onChange={this.onChange1}
                                 />
-                                <Label for="description">Description</Label>
-                                <Input 
+                                {/* <Label for="description">Description</Label> */}
+                                {/* <Input 
                                     type="textarea"
                                     Desc="Description"
-                                    name='name'
+                                    description="description"
                                     placeholder="More details..."
                                     onChange={this.onChange2}
-                                />
+                                /> */}
                                 <Button
                                     color="dark"
                                     style={{marginTop:"2rem"}}
@@ -94,9 +94,15 @@ class QuestionModal extends Component{
     }
 }
 
+QuestionModal.propTypes={
+    addQuestion:PropTypes.func.isRequired,
+    question:PropTypes.object.isRequired,
+    description:PropTypes.object.isRequired
+
+}
 const mapStateToProps = state => ({
     question: state.question,
-    description: state.Desc
+    description: state.description
 });
 
 export default connect(mapStateToProps, {addQuestion})(QuestionModal);
