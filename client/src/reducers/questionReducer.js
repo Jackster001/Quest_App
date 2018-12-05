@@ -1,4 +1,5 @@
 import {GET_QUESTIONS, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING, GET_SPECIFIC_QUESTION} from '../actions/types';
+import QuestionModal from '../components/QuestionModal';
 
 const initialState={
     questionItems:[],
@@ -17,7 +18,8 @@ export default function(state= initialState, action){
         case GET_SPECIFIC_QUESTION:
             return{
                 ...state,
-                oneQuestion: state.questionItems.filter(questionItems => questionItems._id == action.payload)
+                oneQuestion:action.payload
+                // oneQuestion: state.questionItems.filter(questionItems => questionItems._id == action.payload)
             };
         case DELETE_QUESTION:
             return{

@@ -38,7 +38,7 @@ export const deleteQuestion = id => dispatch => {
     axios.delete('/api/items/'+identity).then(res =>
         dispatch({
             type: DELETE_QUESTION,
-            payload: id
+            payload: res.data
         })
     )
 };

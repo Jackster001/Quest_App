@@ -21,9 +21,12 @@ router.post('/', (req, res)=> {
     const newItem=new Item({
         question:req.body.question,
         description:req.body.description
+
     });
     newItem.save().then(Item => res.json(Item));
 });
+
+
 
 router.get('/:id', (req, res)=> {
     Item.findById(req.params.id)

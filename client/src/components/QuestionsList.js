@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
+import {Container, ListGroup, ListGroupItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {connect} from 'react-redux';
 import {getQuestions, deleteQuestion, addQuestion, oneQuestion} from '../actions/questionActions';
@@ -8,15 +8,29 @@ import PropTypes from 'prop-types';
 
 class QuestionsList extends Component{
     state={
-        questionId:null
+        questionId:null,
+        // modal: false,
+        // text: '',
+        // answer: this.text,
+        // description: this.Desc
     }
     componentDidMount(){
         this.props.getQuestions();
     }
 
+    toggle= () =>{
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+
     onDeleteClick=(id)=>{
         this.props.deleteQuestion(id);
     }
+
+    // onChange1=(event)=>{
+    //     this.setState({[event.target.name]: event.target.value});
+    // }
 
     onFocusClick=(id)=>{
         this.setState.questionId=this.props.oneQuestion(id)
@@ -25,20 +39,7 @@ class QuestionsList extends Component{
     render(){
         const {questionItems } =this.props.question;
         return(
-            <Container>
-                {/* <center>
-                <Button color="success" style={{marginBottom:'2rem'}}
-                onClick= {()=>{
-                    const question=prompt("Enter Question");
-                    if(question){
-                        this.addQuestionClick(question);
-                        // this.setState(state => ({
-                        //     questionItems: [...state.questionItems, {id: uuid(), question}]
-                        // }))
-                    }
-                }}>
-                Add Question</Button></center> */}
-                
+            <Container>            
                 <ListGroup>
                     <TransitionGroup className="QuestContainer">
                         <h1>Questions</h1>
@@ -77,6 +78,17 @@ class QuestionsList extends Component{
                 .filter(questionItems => questionItems._id === this.state.questionId)
                 .map(questionItems=>questionItems.question)
                 }</p> */}
+                 {/* { this.props.oneQuestion
+                    ? this.props.oneQuestion.map(item =>
+                    <this.renderData key={item.id} item={item} />)
+                    : null
+                } */}
+                <div>
+                {this.props.oneQuestion.map(({_id, question})=>{
+                    <p key={_id}>{question}</p>
+                })}
+                
+                </div>
             </Container>
         )
     }
@@ -85,13 +97,15 @@ class QuestionsList extends Component{
 QuestionsList.propTypes={
     getQuestions:PropTypes.func.isRequired,
     question:PropTypes.object.isRequired,
-    description:PropTypes.object.isRequired
+    description:PropTypes.object.isRequired,
+    oneQuestion:PropTypes.func.isRequired
 
 }
 
 const mapStateToProps =(state)=>({
     question:state.question,
-    description:state.description
+    description:state.description,
+    oneQuestion: state.oneQuestion
 });
 
 // export default QuestionsList;
