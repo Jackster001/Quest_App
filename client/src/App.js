@@ -15,11 +15,13 @@ import { setCurrentUser, logoutUser } from './actions/authActions';
 
 import QuestionsList from './components/QuestionsList';
 import UserProfile from './components/UserProfile';
+import AnswerList from './components/AnswerList';
 import QuestionModal from './components/QuestionModal';
 import {Provider} from 'react-redux';
 import { Container } from 'reactstrap'
 import store from './store';
 import dashboard from './components/dashboard/dashboard';
+
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -55,6 +57,8 @@ class App extends Component {
               <Route exact path="/login" component={Login}/>
               <Switch>
               <PrivateRoute exact path="/UserProfile" component={UserProfile}/></Switch>
+              <Route exact path="/AnswerList" component={AnswerList}/>
+
 
 
             </div>

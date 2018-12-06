@@ -57,7 +57,7 @@ class Register extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
+              <h1 className="display-4 text-center">Sign Up (education)</h1>
               <p className="lead text-center">Create your Quest account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -106,7 +106,7 @@ class Register extends Component {
                   onChange={this.onChange}/>
                   {errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>)}
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input type="submit" className="btn btn-col btn-info btn-block mt-4" />
               </form>
             </div>
           </div>

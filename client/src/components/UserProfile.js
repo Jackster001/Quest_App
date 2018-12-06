@@ -32,14 +32,19 @@ class UserProfile extends Component{
         
         return(
             // {this.state.UserData[0].name
-        <div>
+        <div className="profileBox">
             <div className="UserProfileBox">
-                <div className="row">
-                <div className="col-md-3"><img src={this.state.UserData[0].picture} height='auto' width="auto"/></div>
-                <div className="col-md-9">
-                    <div className="container"><h3>Professor: {this.state.UserData[0].name}</h3>
-                    <h4>Email: {this.state.UserData[0].email}</h4>
-                    <p><b>Course Description: </b>{this.state.UserData[0].description}</p></div>
+                <div className="row USER">
+                <div className="col-md-3"><center><img src={this.state.UserData[0].picture} height='auto' width="auto"/></center>
+                <div className="contact">
+                    <p><b>Email:</b> {this.state.UserData[0].email}</p>
+                    <p><b>Office hours :</b><br/> Mon-Fri 5pm-7pm</p></div>
+                </div>
+                <div className="col-md-9 profileDash">
+                    <div className="container">
+                    <div className="profTop"><h3>Professor: {this.state.UserData[0].name}</h3>
+                    <h4>CIS 4100: Object-Oriented Programming II </h4></div>
+                    <div className="descrip"><p><b>Course Description: </b>{this.state.UserData[0].description}</p></div></div>
                 </div>
                     
                     
@@ -47,7 +52,8 @@ class UserProfile extends Component{
                 
                 <Provider store={store}>
                 <Container>
-                <QuestionModal className="modal"/>
+                
+                <QuestionModal />
                 <QuestionsList/>
                 </Container></Provider>
             </div>

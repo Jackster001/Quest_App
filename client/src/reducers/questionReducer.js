@@ -1,6 +1,6 @@
 import {GET_QUESTIONS, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING, GET_SPECIFIC_QUESTION, UPDATE_ANSWER} from '../actions/types';
 import QuestionModal from '../components/QuestionModal';
-import update from 'react-addons-update';
+// import update from 'react-addons-update';
 
 const initialState={
     questionItems:[],
@@ -16,14 +16,14 @@ export default function(state= initialState, action){
                 questionItems: action.payload,
                 loading: false
             };
-        case UPDATE_ANSWER:
-            return update(state, { 
-                answer: { 
-                [action._id]: {
-                    answer: {$set: action.payload}
-                }
-            }
-            });
+        // case UPDATE_ANSWER:
+        //     return update(state, { 
+        //         answer: { 
+        //         [action._id]: {
+        //             answer: {$set: action.payload}
+        //         }
+        //     }
+        //     });
         case GET_SPECIFIC_QUESTION:
             return{
                 ...state,

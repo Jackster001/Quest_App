@@ -37,12 +37,12 @@ router.post('/', (req, res)=> {
 //     newItem.save().then(Item => res.json(Item));
 // });
 
-router.post('/:id', (req, res)=> {
-    Item.findById(req.params.id)
-    .then(item => res.json(item)
-    .catch(err=> res.status(404).json({success:false})
-    ));
-});
+// router.post('/:id', (req, res)=> {
+//     Item.findById(req.params.id)
+//     .then(item => res.json(item)
+//     .catch(err=> res.status(404).json({success:false})
+//     ));
+// });
 
 //@route    DELTE api/items/:id
 //@desc     Delete a item

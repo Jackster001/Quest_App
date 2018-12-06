@@ -50,12 +50,12 @@ class QuestionModal extends Component{
     render(){
         return(
             <div>
-                <center>
+                
                 <Button
                     color="dark"
-                    style={{marginBottom: '2rem'}}
+                    style={{marginBottom: '2rem', width:'25%'}}
                     onClick={this.toggle}
-                >ask Question</Button></center>
+                >ask Question</Button>
                 <Modal
                     isOpen={this.state.modal}
                     toggle={this.toggle}
