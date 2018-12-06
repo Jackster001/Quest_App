@@ -10,9 +10,9 @@ const ItemSchema= new Schema({
     description:{
         type: String
     },
-    answers:{
-        type: String
-    },
+    answer:{
+        type: String}
+    ,
     date: {
         type: Date,
         default: Date.now

@@ -27,7 +27,7 @@ class QuestionsList extends Component{
     onDeleteClick=(id)=>{
         this.props.deleteQuestion(id);
     }
-
+    // onAnswerClick=()
     // onChange1=(event)=>{
     //     this.setState({[event.target.name]: event.target.value});
     // }

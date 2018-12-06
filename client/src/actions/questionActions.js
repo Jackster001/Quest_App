@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_QUESTIONS,GET_SPECIFIC_QUESTION, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING} from './types';
+import {GET_QUESTIONS,GET_SPECIFIC_QUESTION, ADD_QUESTION, DELETE_QUESTION, QUESTIONS_LOADING, UPDATE_ANSWER} from './types';
 
 export const getQuestions = () => dispatch => {
     // return{
@@ -32,6 +32,15 @@ export const oneQuestion = id => dispatch =>{
             type: GET_SPECIFIC_QUESTION,
             payload: res.data
         }))
+}
+export const addAnswer = (id,answer)=> dispatch =>{
+    var identity=""+id;
+    axios
+    .post('/api/items/'+identity,answer)
+    .then(res => dispatch({
+        type: UPDATE_ANSWER,
+        payload:res.data
+    }))
 }
 export const deleteQuestion = id => dispatch => {
     var identity=""+id;
