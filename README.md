@@ -1,4 +1,4 @@
-![alt text](https://github.com/Jackster001/Quest_App/blob/assets/Quest_Logo.jpg | width:200)
+![alt text](https://github.com/Jackster001/Quest_App/blob/assets/Quest_Logo.jpg | width=200)
 # Quest App
 
 Quest is a online platform for students and teachers where students can ask professors questions about related materials. 
