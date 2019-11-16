@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class AnswerList extends Component{
     render(){
         return(
-            <div className="container" >
+            <div className="container answerList" >
                 <div className="oneQuest"><h2>What is polymorphism, what is it for, and how is it used?</h2></div>
                 <hr/>
                 <br/>

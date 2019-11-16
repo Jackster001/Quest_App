@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import PrivateRoute from './components/common/PrivateRoute'
-// layoutcomponents
 import AppNavBar from './components/layout/AppNavBar';
 import Landing from './components/layout/Landing';
 import Footer from './components/layout/footer';
@@ -12,7 +11,6 @@ import Login from './components/auth/Login';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
-
 import QuestionsList from './components/QuestionsList';
 import UserProfile from './components/UserProfile';
 import AnswerList from './components/AnswerList';
@@ -58,19 +56,9 @@ class App extends Component {
               <Switch>
               <PrivateRoute exact path="/UserProfile" component={UserProfile}/></Switch>
               <Route exact path="/AnswerList" component={AnswerList}/>
-
-
-
             </div>
-            {/* <AppNavBar/>
-            <UserProfile/>
-            <Container>
-              <QuestionModal/>
-            <QuestionsList/>
-            </Container> */}
             <Footer/>
           </div>
-          
         </Router>
       </Provider>
     );
