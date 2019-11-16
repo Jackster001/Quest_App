@@ -1,3 +1,4 @@
+![alt text] (https://github.com/Jackster001/Quest_App/blob/assets/Quest_Logo.jpg)
 # Quest App
 
 Quest is a online platform for students and teachers where students can ask professors questions about related materials. 
@@ -29,4 +30,3 @@ Start using the application
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Visuals
-
