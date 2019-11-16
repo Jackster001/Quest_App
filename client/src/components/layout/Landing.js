@@ -17,7 +17,7 @@ class Landing extends Component {
               <div class="col-md-12 text-center">
                 <h1 class="display-3 mb-4">Quest
                 </h1>
-                <p class="lead"> A place for the curious minds. Have your questions ready.</p>
+                <p class="lead">Need to ask your teachers something? Have your questions ready.</p>
                 <hr />
                 <Link to="/register" class="btn btn-col btn-lg btn-info mr-2">Sign Up</Link>
                 <Link to="/login" class="btn btn-lg btn-light">Login</Link>

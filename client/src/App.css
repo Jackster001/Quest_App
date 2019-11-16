@@ -91,14 +91,6 @@
     background-color: #6B4E71;
     color: white !important;
 }
-  /* .row1:after {
-    content: "";
-    display: table;
-    clear: both;
-  } */
-/* .questionContent{
-    height: auto;
-} */
 .qTitle{
     border: 1px solid black;
     border-radius: 10px;
