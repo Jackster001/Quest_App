@@ -5,6 +5,7 @@ Quest is a online platform for students and teachers where students can ask prof
 ## How to get started
 
 Download React developer tools
+
 Clone Repository and install all packages
 ```
 npm install
